@@ -1,0 +1,43 @@
+body{
+
+}
+.area{
+    
+    margin: 200px;
+    padding: 50px;
+    
+    border-radius: 10px;
+    box-shadow:5px 5px 10px grey;
+    
+}
+#homepage{
+    display: none;
+   
+    
+}
+.status{
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+.row{
+    padding: 100px;
+}
+.withdraw{
+    background-color: rgb(245, 170, 9);
+}
+.deposit{
+    background-color: rgb(255, 8, 0);
+   
+}
+.balance{
+    border: -450px;
+    background-color: rgb(80, 226, 43);
+}
+.design{
+    margin: 25px;
+    padding: 50px;
+    
+    border-radius: 10px;
+    box-shadow:5px 5px 10px grey; 
+}
