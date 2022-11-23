@@ -23,9 +23,8 @@
             <button type="button" id="button" class="btn btn-primary">Submit</button>
         </div>
     </div>
-    <div id="homepage">
-        <h6>This is Home</h6>
-        <div class="row ">
+    <div id="homepage ">
+        <div class="row w-100">
             <div class="col-md-4">
                 <div class="deposit status">
                     <h3>Deposit</h3>
@@ -65,46 +64,48 @@
             </div>
         </div>
         <script>
-            const button = document.getElementById("button");
-            button.addEventListener('click', function () {
+            function amountNumber(id) {
+                const depositAmount = document.getElementById(id).value;
+                return parseFloat(depositAmount);
+            }
+            function balanceCount(amountInt, id) {
+                const totalDeposit = document.getElementById(id).innerText;
+                const totalDepositInt = parseFloat(totalDeposit);
+
+                totalDepositIntFinal = totalDepositInt + amountInt;
+                document.getElementById(id).innerText = totalDepositIntFinal;
+
+                const balance = document.getElementById('bal').innerText;
+                const balanceInt = parseFloat(balance);
+                if(id=='dep'){
+                document.getElementById('bal').innerText = balanceInt + amountInt;
+                }
+                else{
+                document.getElementById('bal').innerText = balanceInt - amountInt;   
+                }
+            }
+
+            const loginButton = document.getElementById("button");
+            loginButton.addEventListener('click', function () {
                 const login = document.getElementById("log");
                 login.style.display = 'none';
                 const homePage = document.getElementById("homepage");
                 homePage.style.display = 'block';
             })
-            const button1 = document.getElementById('button1');
-            button1.addEventListener('click', function () {
-                const depositAmount = document.getElementById('deposit').value;
-                const depositAmountInt = parseFloat(depositAmount);
-                console.log(depositAmountInt);
-                const totalDeposit = document.getElementById('dep').innerText;
-                const totalDepositInt = parseFloat(totalDeposit);
-                console.log(totalDepositInt + depositAmountInt);
+            const depositButton = document.getElementById('button1');
+            depositButton.addEventListener('click', function () {
+                const depositAmountInt = amountNumber('deposit');
 
-                totalDepositIntFinal = totalDepositInt + depositAmountInt;
-                document.getElementById('dep').innerText = totalDepositIntFinal;
+                balanceCount(depositAmountInt, 'dep');
                 document.getElementById('deposit').value = '';
 
-                const balance = document.getElementById('bal').innerText;
-                const balanceInt = parseFloat(balance);
-                document.getElementById('bal').innerText = balanceInt + totalDepositIntFinal;
             })
             const button2 = document.getElementById('button2');
             button2.addEventListener('click', function () {
-                const withdrawAmount = document.getElementById('withdraw').value;
-                const withdrawAmountInt = parseFloat(withdrawAmount);
-                const totalWithdraw = document.getElementById('with').innerText;
+                const withdrawAmountInt = amountNumber('withdraw');
 
-                totalWithdrawInt = parseFloat(totalWithdraw);
-                totalWithdrawIntFinal = totalWithdrawInt + withdrawAmountInt;
-                document.getElementById('with').innerText = totalWithdrawIntFinal;
+                balanceCount(withdrawAmountInt, 'with');
                 document.getElementById('withdraw').value = '';
-
-                const balance = document.getElementById('bal').innerText;
-                const balanceInt = parseFloat(balance);
-                document.getElementById('bal').innerText = balanceInt - totalWithdrawIntFinal;
-
-
 
             })
 
